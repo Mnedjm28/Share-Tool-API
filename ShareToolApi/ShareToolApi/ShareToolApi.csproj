@@ -208,6 +208,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -369,6 +370,10 @@
     <ProjectReference Include="..\SharedToolApi.Business\SharedToolApi.Business.csproj">
       <Project>{384a56f0-fa8a-4da9-9d01-541611d04de6}</Project>
       <Name>SharedToolApi.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedToolApi.DAL\SharedToolApi.DAL.csproj">
+      <Project>{DE2059D7-CD9A-4E23-BA27-11CA95BE04B6}</Project>
+      <Name>SharedToolApi.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
