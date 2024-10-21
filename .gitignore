@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+ShareToolApi/.cr/personal/FavoritesList/List.xml
