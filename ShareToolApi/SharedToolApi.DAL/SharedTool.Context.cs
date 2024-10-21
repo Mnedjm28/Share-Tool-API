@@ -13,10 +13,10 @@ namespace SharedToolApi.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SharedToolEntities : DbContext
+    public partial class SharedToolDb : DbContext
     {
-        public SharedToolEntities()
-            : base("name=SharedToolEntities")
+        public SharedToolDb()
+            : base("name=SharedToolDb")
         {
         }
     

@@ -51,11 +51,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorrowedToolRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\SharedTool.Business.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedTool.Business.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ToolRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedToolApi.DAL\SharedToolApi.DAL.csproj">
+      <Project>{DE2059D7-CD9A-4E23-BA27-11CA95BE04B6}</Project>
+      <Name>SharedToolApi.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SharedTool.Business.ar.resx" />
+    <EmbeddedResource Include="Resources\SharedTool.Business.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedTool.Business.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -54,68 +54,68 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="BorrowedTool.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedToolModel.Context.cs">
+    <Compile Include="SharedTool.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SharedToolModel.Context.tt</DependentUpon>
+      <DependentUpon>SharedTool.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SharedToolModel.cs">
+    <Compile Include="SharedTool.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
-    <Compile Include="SharedToolModel.Designer.cs">
+    <Compile Include="SharedTool.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SharedToolModel.edmx</DependentUpon>
+      <DependentUpon>SharedTool.edmx</DependentUpon>
     </Compile>
     <Compile Include="Tool.cs">
-      <DependentUpon>SharedToolModel.tt</DependentUpon>
+      <DependentUpon>SharedTool.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="SharedToolModel.edmx">
+    <EntityDeploy Include="SharedTool.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SharedToolModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>SharedTool.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SharedToolModel.edmx.diagram">
-      <DependentUpon>SharedToolModel.edmx</DependentUpon>
+    <None Include="SharedTool.edmx.diagram">
+      <DependentUpon>SharedTool.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SharedToolModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SharedToolModel.edmx</DependentUpon>
-      <LastGenOutput>SharedToolModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SharedToolModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SharedToolModel.edmx</DependentUpon>
-      <LastGenOutput>SharedToolModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="SharedTool.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SharedTool.edmx</DependentUpon>
+      <LastGenOutput>SharedTool.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SharedTool.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SharedTool.edmx</DependentUpon>
+      <LastGenOutput>SharedTool.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -344,7 +344,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="SharedToolEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SharedToolDb" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
@@ -378,7 +378,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SharedToolModelStoreContainer" CdmEntityContainer="SharedToolEntities">
+        <EntityContainerMapping StorageEntityContainer="SharedToolModelStoreContainer" CdmEntityContainer="SharedToolDb">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="SharedToolModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
