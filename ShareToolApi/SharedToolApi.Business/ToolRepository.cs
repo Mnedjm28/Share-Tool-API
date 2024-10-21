@@ -1,31 +1,48 @@
-﻿using SharedToolApi.DAL;
+﻿using SharedToolApi.Business.DTOs;
+using SharedToolApi.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SharedToolApi.Business
 {
     public class ToolRepository
     {
-        public async Task<List<Tool>> GetAllTools()
+        public async Task<List<ToolDto>> GetAllTools()
         {
             var context = new SharedToolDb();
-            return await context.Tools.ToListAsync();
+            return await context.Tools.Include(t => t.BorrowedTools).Select(tool => new ToolDto
+            {
+                Id = tool.Id,
+                Name = tool.Name,
+                Quantity = tool.Quantity,
+                ImageUrl = tool.ImageUrl,
+                QtyReal = tool.Quantity - tool.BorrowedTools.Count(o => o.Approved) ?? 0,
+            }).ToListAsync();
         }
 
-        public async Task<Tool> GetToolById(int id)
+        public async Task<ToolDto> GetToolById(int id)
         {
             var context = new SharedToolDb();
-            return await context.Tools.FindAsync(id);
+            return new ToolDto(await context.Tools.FindAsync(id));
         }
 
-        public async Task Add(Tool tool)
+        public async Task Add(ToolDto tool)
         {
             var context = new SharedToolDb();
-            context.Tools.Add(tool);
+            context.Tools.Add(new Tool
+            {
+                Id = tool.Id,
+                Name = tool.Name,
+                Quantity = tool.Quantity,
+                ImageUrl = tool.ImageUrl,
+                Description = tool.Description
+
+            });
             await context.SaveChangesAsync();
         }
 

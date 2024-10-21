@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SharedToolApi.Business;
-using SharedToolApi.DAL;
+using SharedToolApi.Business.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,13 @@ namespace ShareToolApi.Controllers
 {
     public class ToolsController : ApiController
     {
-        public async Task<JsonResult<List<Tool>>> GetAllTools() {
+        public async Task<JsonResult<List<ToolDto>>> GetAllTools() {
             var toolRepo = new ToolRepository();
-
-            return Json(await toolRepo.GetAllTools());
+            return Json(await toolRepo.GetAllTools(),
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                });
         }
     }
 }

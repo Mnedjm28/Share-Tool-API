@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BorrowedToolRepository.cs" />
+    <Compile Include="DTOs\BorrowedToolDto.cs" />
+    <Compile Include="DTOs\ToolDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\SharedTool.Business.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,4 +1,5 @@
-﻿using SharedToolApi.DAL;
+﻿using SharedToolApi.Business.DTOs;
+using SharedToolApi.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,21 +12,26 @@ namespace SharedToolApi.Business
 {
     public class BorrowedToolRepository
     {
-        public async Task<List<BorrowedTool>> GetAllBorrowedTools()
+        public async Task<List<BorrowedToolDto>> GetAllBorrowedTools()
         {
             var context = new SharedToolDb();
-            var borrowedTools = await context.BorrowedTools.ToListAsync();
-            return borrowedTools;
+            return await context.BorrowedTools.Select(b => new BorrowedToolDto
+            {
+                Id = b.Id,
+                UserId = b.UserId,
+                ToolId = b.ToolId,
+                Approved = b.Approved,
+                Date = b.Date
+            }).ToListAsync();
         }
 
-        public async Task<BorrowedTool> GetBorrowedToolById(int id, SharedToolDb context = null)
+        public async Task<BorrowedToolDto> GetBorrowedToolById(int id, SharedToolDb context = null)
         {
             context = context ?? new SharedToolDb();
-            var borrowedTool = await context.BorrowedTools.FindAsync(id);
-            return borrowedTool;
+            return new BorrowedToolDto(await context.BorrowedTools.FindAsync(id));
         }
 
-        public async Task Add(BorrowedTool borrowedTool)
+        public async Task Add(BorrowedToolDto borrowedTool)
         {
             var context = new SharedToolDb();
             var toolRepo = new ToolRepository();
@@ -34,9 +40,15 @@ namespace SharedToolApi.Business
             if (tool.QtyReal <= 0)
                 throw new Exception(Resources.SharedTool_Business.ToolOutOfStock);
 
-            context.BorrowedTools.Add(borrowedTool);
+            context.BorrowedTools.Add(new BorrowedTool
+            {
+                Id = borrowedTool.Id,
+                UserId = borrowedTool.UserId,
+                ToolId = borrowedTool.ToolId,
+                Approved = borrowedTool.Approved,
+                Date = borrowedTool.Date
+            });
             await context.SaveChangesAsync();
-
         }
 
         public async Task Delete(int id)
